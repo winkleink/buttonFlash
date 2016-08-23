@@ -17,7 +17,7 @@ pygame.mixer.init()
 pygame.mixer.get_init
 
 window = pygame.display.set_mode((600, 400),)
-pygame.display.set_caption("Button Racer")
+pygame.display.set_caption("Button Flash")
 textfont = pygame.font.SysFont("moonspace",100)
 window.fill((255,255,255))
 pygame.display.update()
