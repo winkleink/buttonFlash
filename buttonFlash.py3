@@ -4,24 +4,38 @@ import time
 import spidev
 from random import randint
 import pygame 
+import os
+
+# get current working directory
+curDir= os.getcwd() +"/"
 
 
 # Change these to change the game
 pause = 10 # how long to wait for a button to be pressed
-numberOfNodes = 5 # number of buttons
+numberOfNodes = 2 # number of buttons
 
+ready = "readysteadygoeffect.ogg"
+countdown = ["one.ogg", "two.ogg", "three.ogg", "four.ogg", "five.ogg", "six.ogg", "seven.ogg", "eight.ogg", "nine.ogg", "ten.ogg"]
 
 pygame.init()
 pygame.font.init()
 pygame.mixer.init()
 pygame.mixer.get_init
 
+
 window = pygame.display.set_mode((600, 400),)
-pygame.display.set_caption("Button Flash")
+pygame.display.set_caption("Button Racer")
 textfont = pygame.font.SysFont("moonspace",100)
 window.fill((255,255,255))
 pygame.display.update()
 
+
+# print("playing sound")
+soundPlay = pygame.mixer.Sound(curDir+"readysteadygoeffect.ogg")
+soundPlay.set_volume(1)
+# soundPlay.play()
+
+GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
 pipes = [[0xE8, 0xE8, 0xF0, 0xF0, 0xE1], [0xF0, 0xF0, 0xF0, 0xF0, 0xE1]]
@@ -82,12 +96,20 @@ while True:
                     do = 1
                     play = 2
                     steps = 1
+                    print("Test Mode")
                     message = list("TEST")
+                    soundPlay = pygame.mixer.Sound(curDir+"testmode.ogg")
+                    soundPlay.play()
                     
                 if event.key == pygame.K_RETURN:
                     do = 1
                     play = 1
                     steps = 20
+                    print("Starting Game")
+                    soundPlay = pygame.mixer.Sound(curDir+"readysteadygoeffect.ogg")
+                    soundPlay.play()
+                    time.sleep(4)
+
                     
     pygame.event.clear
     gamestartime = time.time()
@@ -102,6 +124,9 @@ while True:
                 print("boo picked the same one again nodenumber"+str(nodeNumber)+" | newnodenumber "+str(newnodeNumber)+"\n\r")
             nodeNumber = newnodeNumber
             message = list(nodes[nodeNumber])
+            soundPlay = pygame.mixer.Sound(curDir+countdown[nodeNumber])
+            soundPlay.play()
+
 
         print(message)
         while len(message) <32:
@@ -144,7 +169,13 @@ while True:
     
     print ("\r\nYour score is: "+ str(score)+"\r\n")
     if play ==1:
+        soundPlay = pygame.mixer.Sound("/home/pi/buttonFlash/gameover.ogg")
+        soundPlay.play()
+        time.sleep(2)
         if score < highscore or highscore == 0:
+            soundPlay = pygame.mixer.Sound("/home/pi/buttonFlash/newhighscore.ogg")
+            soundPlay.play()
+            time.sleep(2)
             highscore = score
     
         highscoretext = textfont.render("High Score: " + str(highscore), 1, (255,0,0))    
