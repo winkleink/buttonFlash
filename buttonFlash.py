@@ -15,7 +15,7 @@ curDir= os.getcwd() +"/"
 pause = 10 # how long to wait for a button to be pressed
 numberOfNodes =2 # number of buttons
 sayNumbers = 0
-gamelen = 5 # number of button presses in a game
+gamelen = 20 # number of button presses in a game
 
 ready = "readysteadygoeffect.ogg"
 countdown = ["one.ogg", "two.ogg", "three.ogg", "four.ogg", "five.ogg", "six.ogg", "seven.ogg", "eight.ogg", "nine.ogg", "ten.ogg"]
@@ -131,9 +131,9 @@ while True:
     gamestartime = time.time()
     print ("gamestarttime is "+str(gamestartime))
     if play == 1:
-        playtext = textfont.render("PLAY!", 1, (0,0,192)) 
+        playtext = textfont.render("PLAY !", 1, (0,0,192)) 
     else:
-        playtext = textfont.render("TEST!", 1, (0,0,192)) 
+        playtext = textfont.render("TEST !", 1, (0,0,192)) 
 
     window.fill((255,255,255))
     window.blit(playtext, (200,150))
@@ -205,7 +205,7 @@ while True:
                                    
     gameendtime = time.time()
     print ("raw score: " + str(gameendtime-gamestartime))
-    score = (int((gameendtime-gamestartime)*10)/10)+0.0
+    score = (int((gameendtime-gamestartime)*100)/100)+0.0
     
     print ("\r\nYour score is: "+ str(score)+"\r\n")
     if play ==1:
