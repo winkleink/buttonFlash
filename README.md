@@ -28,8 +28,11 @@ I've tried to group these near the top of the code so it's easy to find then and
 
 # Change these to change the game
 pause = 10 # how long to wait for a button to be pressed - if bad signal the game will go onto the next random button 
+
 numberOfNodes =2 # number of buttons in your game.  The code can handle up to 10 without modification but you don't have to have 10.
+
 sayNumbers = 0 - This is the variable changed with [p] and [s]
+
 gamelen = 5 # number of button presses in a game 
 
 Techical stuff.
