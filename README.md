@@ -35,7 +35,7 @@ sayNumbers = 0 - This is the variable changed with [p] and [s]
 
 gamelen = 5 # number of button presses in a game 
 
-# Techical stuff
+# Technical stuff
 
 For my sanity and shortness I'm going to call each Arduino/Button a node.
 
