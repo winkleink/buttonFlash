@@ -12,7 +12,7 @@ curDir= os.getcwd() +"/"
 
 # Change these to change the game
 pause = 10 # how long to wait for a button to be pressed
-numberOfNodes = 2 # number of buttons
+numberOfNodes = 5 # number of buttons
 
 ready = "readysteadygoeffect.ogg"
 countdown = ["one.ogg", "two.ogg", "three.ogg", "four.ogg", "five.ogg", "six.ogg", "seven.ogg", "eight.ogg", "nine.ogg", "ten.ogg"]
@@ -40,7 +40,7 @@ GPIO.setmode(GPIO.BCM)
 
 pipes = [[0xE8, 0xE8, 0xF0, 0xF0, 0xE1], [0xF0, 0xF0, 0xF0, 0xF0, 0xE1]]
 
-nodes = ["1P", "2P", "3P", "4P", "5P"]
+nodes = ["1P", "2P", "3P", "4P", "5P", "6P", "7P", "8P", "9P", "10P"]
 radio = NRF24(GPIO, spidev.SpiDev())
 radio.begin (0, 17)  # CE0 value 0 is GPIO 8  CE Value - GPIO 17
 
